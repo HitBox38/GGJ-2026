@@ -8,6 +8,9 @@ public class MainMenuScript : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene(gameSceneName);
+
+        // change state to inGame
+        GameManager.Instance.SetState(LevelState.InGame);
     }
 
     public void Quit()
