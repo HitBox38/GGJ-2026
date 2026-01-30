@@ -76,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldItem
   _itemData: {fileID: 0}
   _spriteRenderer: {fileID: 8159041181864500265}
-  _circleCollider2D: {fileID: 0}
+  _collider2D: {fileID: 9125411219397602616}
   _rigidbody2D: {fileID: 6490658589251384524}
 --- !u!212 &8159041181864500265
 SpriteRenderer:
