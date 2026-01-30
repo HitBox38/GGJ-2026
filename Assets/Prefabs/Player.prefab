@@ -255,6 +255,8 @@ MonoBehaviour:
   speed: 10
   jumpForce: 25
   groundCheck: {fileID: 7860036994350553632}
+  airFrictionPhysicsMaterial: {fileID: 0}
+  groundFrictionPhysicsMaterial: {fileID: 0}
 --- !u!70 &8101333524074745405
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

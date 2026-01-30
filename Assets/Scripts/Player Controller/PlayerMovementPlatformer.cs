@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private GroundChecker groundCheck;
+
+    [SerializeField] private PhysicsMaterial2D airFrictionPhysicsMaterial;
+    [SerializeField] private PhysicsMaterial2D groundFrictionPhysicsMaterial;
     
     private Rigidbody2D _rb2d;
     private InputAction _moveAction;
@@ -43,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
+
+        _rb2d.sharedMaterial = groundCheck.IsGrounded ?
+            groundFrictionPhysicsMaterial : airFrictionPhysicsMaterial;
     }
 
     public void SetSpeedModifier(float modifier)
