@@ -7,7 +7,7 @@ public class WorldItem : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private CircleCollider2D _circleCollider2D;
+    [SerializeField] private Collider2D _collider2D;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
     private bool _isPickedUp = false;
@@ -36,12 +36,6 @@ public class WorldItem : MonoBehaviour
         {
             _rigidbody2D.mass = _itemData.weight;
         }
-
-        // adjust circle collider radius
-        if (_circleCollider2D != null)
-        {
-            _circleCollider2D.radius = _itemData.itemRadius;
-        }
     }
 
     public void PickUp(GameObject picker)
@@ -50,10 +44,10 @@ public class WorldItem : MonoBehaviour
         {
             _isPickedUp = true;
             // disable collider and rigidbody
-            if (_circleCollider2D != null && _rigidbody2D != null)
+            if (_collider2D != null && _rigidbody2D != null)
             {
                 _rigidbody2D.isKinematic = true;
-                _circleCollider2D.enabled = false;
+                _collider2D.enabled = false;
             }
 
             // set parent to picker
