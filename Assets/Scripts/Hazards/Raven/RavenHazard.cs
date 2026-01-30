@@ -10,8 +10,9 @@ public class RavenGoosePatrol
 
 public class RavenHazard : MonoBehaviour
 {
-    [Header("Movement settings")]
+    [Header("Raven Properties")]
     [SerializeField] private float speed;
+    [SerializeField, Range(0f, 1f)] private float timeReductionPercentage = 0.2f;
     
     [Header("Main Points")]
     [SerializeField] private Transform pointA;
@@ -25,13 +26,12 @@ public class RavenHazard : MonoBehaviour
     private Transform _currentTarget;
     private readonly RavenGoosePatrol _goosePatrol = new();
     
-    // TODO: timer reduction when integrating with game manager
     // for now just debug log when in radius
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Raven Hazard Triggered!");
+            GameManager.Instance.ReduceTime(timeReductionPercentage);
         }
     }
     

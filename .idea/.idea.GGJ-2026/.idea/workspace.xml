@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca68abab-bf50-49c9-9dfa-46b1f3f9719c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Dizzying Cauldron.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Dizzying Cauldron/Dizzying Cauldron Hazard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Dizzying Cauldron/Dizzying Cauldron Hazard.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Enchanted Barrier.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Enchanted Barrier/Enchanted Barrier.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Enchanted Barrier/Enchanted Barrier.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Goose.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Goose/Goose.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Goose/Goose.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven/RavenHazard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven/RavenHazard.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Stop Rune.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Stop Rune/Stop Rune.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Stop Rune/Stop Rune.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hazards Scene/Hazards Testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hazards Scene/Hazards Testing.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Player Contoller Test Scenes/ControllerTests.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Player Contoller Test Scenes/ControllerTests.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven/RavenHazard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven/RavenHazard.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,20 +35,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "hazards",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hazards&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.5f2\Editor\Unity.exe" />
