@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb2d;
     private InputAction _moveAction;
     private InputAction _jumpAction;
+
+    private float _speedModifier = 1;
     
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // side movement
-        var horizontalSpeed = _moveAction.ReadValue<Vector2>().x * speed;
+        var horizontalSpeed = _moveAction.ReadValue<Vector2>().x * speed * _speedModifier;
         var currentYSpeed = _rb2d.linearVelocity.y; // keeping gravity and jumps
         _rb2d.angularVelocity = 0f;
         _rb2d.linearVelocity = new Vector2(horizontalSpeed, currentYSpeed);
@@ -41,5 +43,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
+    }
+
+    public void SetSpeedModifier(float modifier)
+    {
+        _speedModifier = modifier;
     }
 }
