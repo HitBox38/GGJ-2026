@@ -63,6 +63,19 @@ public class WorldItem : MonoBehaviour
         }
     }
 
+    // TODO: better highlight effect
+    public void SetHighlight(bool active)
+    {
+        if (active)
+        {
+            _spriteRenderer.color = Color.yellow; // simple placeholder highlight effect
+        }
+        else
+        {
+            _spriteRenderer.color = Color.white;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
