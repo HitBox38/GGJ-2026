@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ca68abab-bf50-49c9-9dfa-46b1f3f9719c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Hazards/Dizzying Cauldron.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Hazards/Dizzying Cauldron.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hazards Scene/Hazards Testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hazards Scene/Hazards Testing.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Player Contoller Test Scenes/ControllerTests.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Player Contoller Test Scenes/ControllerTests.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven/RavenHazard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Raven/RavenHazard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hazards/Dizzying Cauldron/Dizzying Cauldron Hazard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Dizzying Cauldron/Dizzying Cauldron Hazard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hazards/Enchanted Barrier/Enchanted Barrier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Enchanted Barrier/Enchanted Barrier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Hazards/Stop Rune/Stop Rune.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Hazards/Stop Rune/Stop Rune.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

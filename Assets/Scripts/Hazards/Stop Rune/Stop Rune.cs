@@ -7,5 +7,7 @@ public class StopRune : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         throw new NotImplementedException();
+        // if (!other.CompareTag("Player")) return;
+        // other.GetComponent<PlayerMovement>().SetSpeedModifier(0);
     }
 }

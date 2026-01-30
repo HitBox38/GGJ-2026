@@ -1,17 +1,26 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class DizzyingCauldronHazard : MonoBehaviour
 {
+    [SerializeField, Range(0.1f, 0.8f)] private float effectDelay = 0.5f;
     
-    // TODO: change move speed multiply by -1 to make the movement inverted
-    private void OnTriggerEnter2D(Collider2D other)
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        throw new NotImplementedException();
+        if (!other.CompareTag("Player")) yield break;
+        // wait for a bit so that the player wont get stuck in switching directions every frame.
+        yield return new WaitForSeconds(effectDelay);
+        // multiplying by -1 to invert the speed/inputs
+        other.GetComponent<PlayerMovement>().SetSpeedModifier(-1);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private IEnumerator OnTriggerExit2D(Collider2D other)
     {
-        throw new NotImplementedException();
+        if (!other.CompareTag("Player")) yield break;
+        // wait for a bit so that the player wont get stuck in switching directions every frame.
+        yield return new WaitForSeconds(effectDelay);
+        // return the speed modifier to normal
+        other.GetComponent<PlayerMovement>().SetSpeedModifier(1);
     }
 }

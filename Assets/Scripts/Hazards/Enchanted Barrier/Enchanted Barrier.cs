@@ -9,19 +9,13 @@ public class EnchantedBarrier : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // TODO: half movement speed, integrate with player controls
-        if (other.CompareTag("Player"))
-        {
-            // other.GetComponent<PlayerMovement>();
-        }
+        if (!other.CompareTag("Player")) return;
+        other.GetComponent<PlayerMovement>().SetSpeedModifier(speedReducingPercentage);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // TODO: restore movement speed, integrate with player controls
-        if (other.CompareTag("Player"))
-        {
-            // other.GetComponent<PlayerMovement>();
-        }
+        if (!other.CompareTag("Player")) return;
+        other.GetComponent<PlayerMovement>().SetSpeedModifier(1);
     }
 }
