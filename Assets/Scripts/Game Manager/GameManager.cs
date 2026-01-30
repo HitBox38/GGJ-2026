@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum LevelState { PreGame, InGame, Win, Lose, Pause }
 
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable() => OnStateChanged -= HandleStartGame;
 
+    private InputAction _pauseAction;
+    
     public LevelState State { get; private set; } = LevelState.PreGame;
     
     /// <summary>
@@ -36,9 +38,18 @@ public class GameManager : MonoBehaviour
     {
         // TODO: remove game start test from here
         SetState(LevelState.InGame);
+        _pauseAction = InputSystem.actions.FindAction("Pause");
     }
 
-    public void ResetLevelTimer()
+    private void Update()
+    {
+        if (_pauseAction.triggered)
+        {
+            SetState(State == LevelState.InGame ? LevelState.Pause : LevelState.InGame);
+        }
+    }
+
+    private void ResetLevelTimer()
     {
         currentRunTime = 0;
     }
