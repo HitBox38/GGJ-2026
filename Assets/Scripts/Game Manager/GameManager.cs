@@ -11,10 +11,13 @@ public class GameManager : MonoBehaviour
     
     public event Action<LevelState, LevelState> OnStateChanged;
     
+    [Header("Timer Settings")]
     [SerializeField, EditorReadOnly] private int currentRunTime;
-    
     [SerializeField, Tooltip("Time in Seconds")] private int maxRunTime = 60;
 
+    [Space, Header("Scoring Settings")]
+    [SerializeField, EditorReadOnly] private int currentScore;
+    
     // handle events subscribing
     private void OnEnable() => OnStateChanged += HandleStartGame;
 
@@ -94,5 +97,14 @@ public class GameManager : MonoBehaviour
         State = next;
         OnStateChanged?.Invoke(prev, next);
         if(next is LevelState.Lose or LevelState.Win) ResetLevelTimer();
+    }
+
+    /// <summary>
+    /// Add to the total score
+    /// TODO: based on item object class calculate var (its value to the player)
+    /// </summary>
+    public void CalculateScore(object[] items) // replace object type with item class type
+    {
+        currentScore = items.Length + 1; // replace with actual calculation
     }
 }
