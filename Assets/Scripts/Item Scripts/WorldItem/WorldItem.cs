@@ -57,6 +57,23 @@ public class WorldItem : MonoBehaviour
         }
     }
 
+    public void Drop()
+    {
+        if (_isPickedUp)
+        {
+            _isPickedUp = false;
+            // enable collider and rigidbody
+            if (_collider2D != null && _rigidbody2D != null)
+            {
+                _rigidbody2D.isKinematic = false;
+                _collider2D.enabled = true;
+            }
+
+            // unparent the item
+            this.transform.SetParent(null);
+        }
+    }
+
     // TODO: better highlight effect
     public void SetHighlight(bool active)
     {

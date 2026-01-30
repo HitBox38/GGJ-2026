@@ -136,6 +136,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""29cee3f9-9995-4e40-a2bf-a78248fceeb3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -259,6 +268,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2937e410-ddb7-407b-9cd7-38cf0a6485c8"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -272,6 +292,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_KeyboardControls_InventoryCycle = m_KeyboardControls.FindAction("InventoryCycle", throwIfNotFound: true);
         m_KeyboardControls_Jump = m_KeyboardControls.FindAction("Jump", throwIfNotFound: true);
         m_KeyboardControls_Pause = m_KeyboardControls.FindAction("Pause", throwIfNotFound: true);
+        m_KeyboardControls_Drop = m_KeyboardControls.FindAction("Drop", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -357,6 +378,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardControls_InventoryCycle;
     private readonly InputAction m_KeyboardControls_Jump;
     private readonly InputAction m_KeyboardControls_Pause;
+    private readonly InputAction m_KeyboardControls_Drop;
     /// <summary>
     /// Provides access to input actions defined in input action map "Keyboard Controls".
     /// </summary>
@@ -388,6 +410,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "KeyboardControls/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_KeyboardControls_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "KeyboardControls/Drop".
+        /// </summary>
+        public InputAction @Drop => m_Wrapper.m_KeyboardControls_Drop;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -429,6 +455,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         /// <summary>
@@ -455,6 +484,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         /// <summary>
@@ -530,5 +562,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Drop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDrop(InputAction.CallbackContext context);
     }
 }
