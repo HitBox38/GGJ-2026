@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public enum LevelState { PreGame, InGame, Win, Lose, Pause }
 
@@ -11,12 +12,10 @@ public class GameManager : MonoBehaviour
     
     public event Action<LevelState, LevelState> OnStateChanged;
     
-    [Header("Timer Settings")]
-    [SerializeField, EditorReadOnly] private int currentRunTime;
+    public int CurrentRunTime { get; private set; }
     [SerializeField, Tooltip("Time in Seconds")] private int maxRunTime = 60;
-
-    [Space, Header("Scoring Settings")]
-    [SerializeField, EditorReadOnly] private int currentScore;
+    
+    public int CurrentScore { get; private set; }
     
     // handle events subscribing
     private void OnEnable() => OnStateChanged += HandleStartGame;
@@ -55,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetLevelTimer()
     {
-        currentRunTime = maxRunTime;
+        CurrentRunTime = maxRunTime;
     }
 
     private void HandleStartGame(LevelState prev, LevelState next)
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
     
     private void AddToRunTime()
     {
-        currentRunTime--;
+        CurrentRunTime--;
     }
 
     private IEnumerator TimerCoroutine()
@@ -76,7 +75,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         AddToRunTime();
         // timer running out
-        if (currentRunTime <= 0)
+        if (CurrentRunTime <= 0)
         {
             // Run Ends, YOU LOSE!
             SetState(LevelState.Lose);
@@ -84,11 +83,6 @@ public class GameManager : MonoBehaviour
             yield break;
         }
         StartCoroutine(TimerCoroutine());
-    }
-    
-    public int GetCurrentRunTime()
-    {
-        return currentRunTime;
     }
     
     public void SetState(LevelState next)
@@ -106,11 +100,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CalculateScore(object[] items) // replace object type with item class type
     {
-        currentScore = items.Length + 1; // replace with actual calculation
+        CurrentScore = items.Length + 1; // replace with actual calculation
     }
 
     public void ReduceTime(float percentage)
     {
-        currentRunTime = Mathf.RoundToInt(currentRunTime * (1 - percentage));
+        CurrentRunTime = Mathf.RoundToInt(CurrentRunTime * (1 - percentage));
     }
 }
