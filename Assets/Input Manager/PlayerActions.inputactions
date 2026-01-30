@@ -3,7 +3,11 @@
     "name": "PlayerActions",
     "maps": [
         {
+<<<<<<< HEAD
             "name": "Keyboard Controls",
+=======
+            "name": "PlayerConrols",
+>>>>>>> player-controller
             "id": "ada8ff99-4a56-49d8-a2af-b16c96608fbf",
             "actions": [
                 {
@@ -41,6 +45,7 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+<<<<<<< HEAD
                 },
                 {
                     "name": "Pause",
@@ -50,6 +55,8 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+=======
+>>>>>>> player-controller
                 }
             ],
             "bindings": [
@@ -162,6 +169,7 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< HEAD
                 },
                 {
                     "name": "",
@@ -173,6 +181,8 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+=======
+>>>>>>> player-controller
                 }
             ]
         }
