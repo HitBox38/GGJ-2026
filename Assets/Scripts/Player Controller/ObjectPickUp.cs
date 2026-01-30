@@ -8,6 +8,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] private LayerMask itemLayer;
     [SerializeField] public float _pickUpRange = 2f;
+    [SerializeField] private InventoryManager _inventoryManager;
 
     private void Awake()
     {
@@ -86,7 +87,12 @@ public class ObjectPickUp : MonoBehaviour
         {
             Debug.Log($"Picking up {_closestWorldItem.name}");
             // TODO: check that player has capacity to pick up item
-            _closestWorldItem.PickUp(this.gameObject);
+            if (_inventoryManager != null && _inventoryManager.CanCarryItem(_closestWorldItem))
+            {
+                _inventoryManager.AddItem(_closestWorldItem);  
+                _closestWorldItem.PickUp(this.gameObject);
+            }
+            
             
             // Optionally clear the target reference immediately since it's now picked up
             // (The Update loop will likely clear it next frame anyway as it moves with player)
