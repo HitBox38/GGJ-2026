@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     // Keep track of inventory items, capacity, more(?)
     [SerializeField] public float maxCarryWeight = 50f;
-    [field: SerializeField] private List<WorldItem> inventoryItems {get;}= new List<WorldItem>();
+    [field: SerializeField] private List<WorldItem> inventoryItems {get;} = new List<WorldItem>();
     [SerializeField] public float currentCarryWeight = 0f;
 
     // Keep track of an item in the inventory for drop
