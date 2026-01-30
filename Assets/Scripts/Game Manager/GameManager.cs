@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -16,11 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField, Tooltip("Time in Seconds")] private int maxRunTime = 60;
     
     public int CurrentScore { get; private set; }
-    
-    // handle events subscribing
-    private void OnEnable() => OnStateChanged += HandleStartGame;
-
-    private void OnDisable() => OnStateChanged -= HandleStartGame;
 
     private InputAction _pauseAction;
     
@@ -34,11 +30,25 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        
+        _pauseAction = InputSystem.actions.FindAction("Pause");
+    }
+    
+    // handle events subscribing
+    private void OnEnable() 
+    {
+        OnStateChanged += HandleStartGame;
+        InventoryManager.OnInventoryChanged += HandleItemsChange;
+    }
+
+    private void OnDisable()
+    {
+        OnStateChanged -= HandleStartGame;
+        InventoryManager.OnInventoryChanged -= HandleItemsChange;
     }
     
     private void Start()
     {
-        _pauseAction = InputSystem.actions.FindAction("Pause");
         ResetLevelTimer();
         
         SetState(LevelState.InGame); // TODO: remove game start test from here
@@ -93,14 +103,10 @@ public class GameManager : MonoBehaviour
         OnStateChanged?.Invoke(prev, next);
         if(next is LevelState.Lose or LevelState.Win) ResetLevelTimer();
     }
-
-    /// <summary>
-    /// Add to the total score
-    /// TODO: based on item object class calculate var (its value to the player)
-    /// </summary>
-    public void CalculateScore(object[] items) // replace object type with item class type
+    
+    private void HandleItemsChange(ItemData[] itemsData) // replace object type with item class type
     {
-        CurrentScore = items.Length + 1; // replace with actual calculation
+        CurrentScore = ScoreCalculatorHelper.CalculateScore(itemsData); // replace with actual calculation
     }
 
     public void ReduceTime(float percentage)

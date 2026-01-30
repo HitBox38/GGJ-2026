@@ -12,6 +12,8 @@ public class WorldItem : MonoBehaviour
 
     private bool _isPickedUp = false;
 
+    public ItemData GetItemData => _itemData;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

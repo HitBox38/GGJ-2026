@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
@@ -14,6 +15,8 @@ public class InventoryManager : MonoBehaviour
 
     private PlayerActions _playerActions;
 
+    public static event Action<ItemData[]> OnInventoryChanged;
+    
     private void Awake()
     {
         _playerActions = new PlayerActions();
@@ -42,6 +45,10 @@ public class InventoryManager : MonoBehaviour
             // add item to inventory and update carry weight
             inventoryItems.Add(item);
             currentCarryWeight += item.GetWeight();
+            // notify inventory change for score calculation
+            OnInventoryChanged?.Invoke(
+                ScoreCalculatorHelper.ConvertWorldItemsToData(inventoryItems)
+                );
             return true;
         }
         return false;
@@ -69,6 +76,10 @@ public class InventoryManager : MonoBehaviour
                 _selectedItemIndex = Mathf.Clamp(_selectedItemIndex, 0,    
                                                 inventoryItems.Count - 1);
             }
+            // notify inventory change for score calculation
+            OnInventoryChanged?.Invoke(
+                ScoreCalculatorHelper.ConvertWorldItemsToData(inventoryItems)
+            );
         }
     }
 
@@ -107,7 +118,7 @@ public class InventoryManager : MonoBehaviour
         _playerActions.KeyboardControls.Drop.performed -= RemoveItem;
     }
 
-    private void  OnInventoryCycle(InputAction.CallbackContext context)
+    private void OnInventoryCycle(InputAction.CallbackContext context)
     {
         // return if no items in inventory
         if (inventoryItems.Count == 0) return;
