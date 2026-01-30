@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Scenes/StartMenu.unity
     guid: 0ac5087580f664d8ca3359af22cef760
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: cdf1529e5d803594ab51f4da3f756a52, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a2f8cd5285731e047a21c1fe3beb2a64, type: 3}
   m_UseUCBPForAssetBundles: 0
