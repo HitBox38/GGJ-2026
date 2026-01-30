@@ -39,9 +39,10 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        // TODO: remove game start test from here
-        SetState(LevelState.InGame);
         _pauseAction = InputSystem.actions.FindAction("Pause");
+        ResetLevelTimer();
+        
+        SetState(LevelState.InGame); // TODO: remove game start test from here
     }
 
     private void Update()
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetLevelTimer()
     {
-        currentRunTime = 0;
+        currentRunTime = maxRunTime;
     }
 
     private void HandleStartGame(LevelState prev, LevelState next)
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
     
     private void AddToRunTime()
     {
-        currentRunTime++;
+        currentRunTime--;
     }
 
     private IEnumerator TimerCoroutine()
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         AddToRunTime();
         // timer running out
-        if (currentRunTime >= maxRunTime)
+        if (currentRunTime <= 0)
         {
             // Run Ends, YOU LOSE!
             SetState(LevelState.Lose);
@@ -106,5 +107,10 @@ public class GameManager : MonoBehaviour
     public void CalculateScore(object[] items) // replace object type with item class type
     {
         currentScore = items.Length + 1; // replace with actual calculation
+    }
+
+    public void ReduceTime(float percentage)
+    {
+        currentRunTime = Mathf.RoundToInt(currentRunTime * (1 - percentage));
     }
 }
