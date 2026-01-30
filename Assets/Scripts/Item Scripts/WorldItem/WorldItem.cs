@@ -70,9 +70,8 @@ public class WorldItem : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public float GetWeight()
     {
-        
+        return _itemData.weight;
     }
 }
