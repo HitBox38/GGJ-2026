@@ -8,18 +8,18 @@ public class DeathMenu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(startGameSceneName);
-
         // set game state to inGame
         GameManager.Instance.SetState(LevelState.InGame);
+        // load the start game scene
+        SceneManager.LoadScene(startGameSceneName);
     }
 
     public void QuitToMainMenu()
     {
-        SceneManager.LoadScene(mainMenuSceneName);
-
         // set game state to preGame
         GameManager.Instance.SetState(LevelState.PreGame);
+        // load the main menu scene
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void Quit()

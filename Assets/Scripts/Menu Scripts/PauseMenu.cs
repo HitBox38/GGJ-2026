@@ -3,23 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName;
     [SerializeField] private string mainMenuSceneName;
+    [SerializeField] private GameObject pauseMenuUI;
 
     public void Resume()
     {
-        SceneManager.LoadScene(gameSceneName);
-
-        // set game state to inGame
+        // set game state to inGame and hide pause menu
         GameManager.Instance.SetState(LevelState.InGame);
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
+        }
     }
 
     public void QuitToMainMenu()
     {
-        SceneManager.LoadScene(mainMenuSceneName);
-        
         // set game state to preGame
         GameManager.Instance.SetState(LevelState.PreGame);
+        // load the main menu scene
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void Quit()

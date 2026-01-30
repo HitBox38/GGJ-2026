@@ -1037,8 +1037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7513d5b5d7843c7a5402bf8a8d91af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
-  gameSceneName: 
   mainMenuSceneName: 
+  pauseMenuUI: {fileID: 2105176881}
 --- !u!1 &2075512543
 GameObject:
   m_ObjectHideFlags: 0
