@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157fc7ede48ce4553bb0777edb726ca1, type: 3}
   m_Name: Basic Item Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
+  itemName: TEST
   itemIcon: {fileID: 0}
-  value: 0
+  value: 30
   weight: 25
   itemRadius: 0
