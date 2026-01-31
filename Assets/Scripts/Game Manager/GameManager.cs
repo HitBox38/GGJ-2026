@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public enum LevelState { PreGame, InGame, Win, Lose, Pause }
 
@@ -11,17 +13,10 @@ public class GameManager : MonoBehaviour
     
     public event Action<LevelState, LevelState> OnStateChanged;
     
-    [Header("Timer Settings")]
-    [SerializeField, EditorReadOnly] private int currentRunTime;
+    public int CurrentRunTime { get; private set; }
     [SerializeField, Tooltip("Time in Seconds")] private int maxRunTime = 60;
-
-    [Space, Header("Scoring Settings")]
-    [SerializeField, EditorReadOnly] private int currentScore;
     
-    // handle events subscribing
-    private void OnEnable() => OnStateChanged += HandleStartGame;
-
-    private void OnDisable() => OnStateChanged -= HandleStartGame;
+    public int CurrentScore { get; private set; }
 
     private InputAction _pauseAction;
     
@@ -35,11 +30,25 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        
+        _pauseAction = InputSystem.actions.FindAction("Pause");
+    }
+    
+    // handle events subscribing
+    private void OnEnable() 
+    {
+        OnStateChanged += HandleStartGame;
+        InventoryManager.OnInventoryChanged += HandleItemsChange;
+    }
+
+    private void OnDisable()
+    {
+        OnStateChanged -= HandleStartGame;
+        InventoryManager.OnInventoryChanged -= HandleItemsChange;
     }
     
     private void Start()
     {
-        _pauseAction = InputSystem.actions.FindAction("Pause");
         ResetLevelTimer();
     }
 
@@ -53,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetLevelTimer()
     {
-        currentRunTime = maxRunTime;
+        CurrentRunTime = maxRunTime;
     }
 
     private void HandleStartGame(LevelState prev, LevelState next)
@@ -64,7 +73,7 @@ public class GameManager : MonoBehaviour
     
     private void AddToRunTime()
     {
-        currentRunTime--;
+        CurrentRunTime--;
     }
 
     private IEnumerator TimerCoroutine()
@@ -74,7 +83,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         AddToRunTime();
         // timer running out
-        if (currentRunTime <= 0)
+        if (CurrentRunTime <= 0)
         {
             // Run Ends, YOU LOSE!
             SetState(LevelState.Lose);
@@ -82,11 +91,6 @@ public class GameManager : MonoBehaviour
             yield break;
         }
         StartCoroutine(TimerCoroutine());
-    }
-    
-    public int GetCurrentRunTime()
-    {
-        return currentRunTime;
     }
     
     public void SetState(LevelState next)
@@ -97,18 +101,14 @@ public class GameManager : MonoBehaviour
         OnStateChanged?.Invoke(prev, next);
         if(next is LevelState.Lose or LevelState.Win) ResetLevelTimer();
     }
-
-    /// <summary>
-    /// Add to the total score
-    /// TODO: based on item object class calculate var (its value to the player)
-    /// </summary>
-    public void CalculateScore(object[] items) // replace object type with item class type
+    
+    private void HandleItemsChange(ItemData[] itemsData) // replace object type with item class type
     {
-        currentScore = items.Length + 1; // replace with actual calculation
+        CurrentScore = ScoreCalculatorHelper.CalculateScore(itemsData); // replace with actual calculation
     }
 
     public void ReduceTime(float percentage)
     {
-        currentRunTime = Mathf.RoundToInt(currentRunTime * (1 - percentage));
+        CurrentRunTime = Mathf.RoundToInt(CurrentRunTime * (1 - percentage));
     }
 }

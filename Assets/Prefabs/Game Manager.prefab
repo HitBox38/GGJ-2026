@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3295186157601344043}
   - component: {fileID: 6765613737343186846}
-  - component: {fileID: 6737718302641555797}
+  - component: {fileID: 7556315305425756969}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -46,10 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4183c762884ca04aae349c12b253fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  currentRunTime: 0
   maxRunTime: 60
-  currentScore: 0
---- !u!114 &6737718302641555797
+--- !u!114 &7556315305425756969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,11 +56,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5716017691718291101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49e9b236b148494ca7df98d5f1b83439, type: 3}
+  m_Script: {fileID: 11500000, guid: d9c4444e82de4b3383eeddbf9ca0fcfe, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MaskSelectionManager
-  maxMasks: 2
-  gameSceneName: GameScene
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  mixer: {fileID: 24100000, guid: 81d20a521a018bf4d963ff52fe09c571, type: 2}
+  musicParam: MusicVolume
+  sfxParam: SFXVolume
+  defaultMusicVolume: 0.8
+  defaultSfxVolume: 0.9
 --- !u!1001 &3573850143169210870
 PrefabInstance:
   m_ObjectHideFlags: 0
