@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviour
     {
         _pauseAction = InputSystem.actions.FindAction("Pause");
         ResetLevelTimer();
-        
-        SetState(LevelState.InGame); // TODO: remove game start test from here
     }
 
     private void Update()

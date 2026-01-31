@@ -8,8 +8,6 @@ public class MaskHandler : MonoBehaviour
     [SerializeField] private MaskObject[] masks;
     [SerializeField] private int currentMaskIndex;
 
-    
-
     // track the current mask object
     private MaskObject currentMaskInstance;
     private PlayerActions _playerActions;
@@ -22,6 +20,9 @@ public class MaskHandler : MonoBehaviour
     private void Start()
     {
         currentMaskIndex = removeMaskValue; // start with no mask equipped
+        
+        // fetch available masks from GameManager
+        masks = MaskSelectionManager.Instance.GetSelectedMasks();
     }
 
     public void ChangeMask(int newIndex)
