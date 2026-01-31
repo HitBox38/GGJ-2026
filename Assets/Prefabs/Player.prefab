@@ -241,6 +241,7 @@ Transform:
   - {fileID: 378024448753508582}
   - {fileID: 7620828545418269324}
   - {fileID: 1207748229230117510}
+  - {fileID: 7580974771859351215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3515034859699090001
@@ -341,6 +342,37 @@ MonoBehaviour:
     m_Bits: 64
   _pickUpRange: 2
   _inventoryManager: {fileID: 1188734720373291238}
+--- !u!1 &8040164663412585191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7580974771859351215}
+  m_Layer: 3
+  m_Name: Mask Placeholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7580974771859351215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040164663412585191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8447487038403952397}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &390130283504747566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -389,6 +421,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3194973838777419023, guid: be2895b6928d54bec860faa916bcb1db, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7473701645547649348}
     - target: {fileID: 6983858542413126083, guid: be2895b6928d54bec860faa916bcb1db, type: 3}
       propertyPath: m_Name
       value: Mask Handler
