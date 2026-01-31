@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     // Keep track of inventory items, capacity, more(?)
     [SerializeField] public float maxCarryWeight = 50f;
-    [field: SerializeField] private List<WorldItem> inventoryItems {get;} = new List<WorldItem>();
+    [field: SerializeField] public List<WorldItem> inventoryItems {get; private set;} = new List<WorldItem>();
     [SerializeField] public float currentCarryWeight = 0f;
 
     // Keep track of an item in the inventory for drop
@@ -34,6 +34,12 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+
+    public void ResetItemIndex()
+    {
+        _selectedItemIndex = 0;
+    }
+
     /// <summary>
     /// Add item to inventory, should only be called after checking capacity with CanCarryItem
     /// </summary>
@@ -52,6 +58,29 @@ public class InventoryManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// Forces the drop of a specific item from the inventory.
+    /// </summary>
+    public void DropItem(WorldItem item)
+    {
+        if (inventoryItems.Contains(item))
+        {
+            item.Drop();
+            inventoryItems.Remove(item);
+            currentCarryWeight -= item.GetWeight();
+
+            // Adjust selected index if it's out of bounds after removal
+            if (inventoryItems.Count == 0)
+            {
+                _selectedItemIndex = 0;
+            }
+            else if (_selectedItemIndex >= inventoryItems.Count)
+            {
+                _selectedItemIndex = Mathf.Clamp(_selectedItemIndex, 0, inventoryItems.Count - 1);
+            }
+        }
     }
 
     public void RemoveItem(InputAction.CallbackContext context)

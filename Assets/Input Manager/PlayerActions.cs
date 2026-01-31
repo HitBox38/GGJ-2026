@@ -145,6 +145,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipMask"",
+                    ""type"": ""Value"",
+                    ""id"": ""8ceda7fa-0548-466c-9959-f162d27cd6ce"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -279,6 +288,39 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7676403-34c8-4db2-b493-9ed799b77ac9"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipMask"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1011c5a6-5cc2-4111-8aa2-58f300d204f6"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": """",
+                    ""action"": ""EquipMask"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a788758f-5b3d-4dba-bd3c-5048e65b9b0c"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": """",
+                    ""action"": ""EquipMask"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -293,6 +335,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_KeyboardControls_Jump = m_KeyboardControls.FindAction("Jump", throwIfNotFound: true);
         m_KeyboardControls_Pause = m_KeyboardControls.FindAction("Pause", throwIfNotFound: true);
         m_KeyboardControls_Drop = m_KeyboardControls.FindAction("Drop", throwIfNotFound: true);
+        m_KeyboardControls_EquipMask = m_KeyboardControls.FindAction("EquipMask", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -379,6 +422,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyboardControls_Jump;
     private readonly InputAction m_KeyboardControls_Pause;
     private readonly InputAction m_KeyboardControls_Drop;
+    private readonly InputAction m_KeyboardControls_EquipMask;
     /// <summary>
     /// Provides access to input actions defined in input action map "Keyboard Controls".
     /// </summary>
@@ -414,6 +458,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "KeyboardControls/Drop".
         /// </summary>
         public InputAction @Drop => m_Wrapper.m_KeyboardControls_Drop;
+        /// <summary>
+        /// Provides access to the underlying input action "KeyboardControls/EquipMask".
+        /// </summary>
+        public InputAction @EquipMask => m_Wrapper.m_KeyboardControls_EquipMask;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -458,6 +506,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @EquipMask.started += instance.OnEquipMask;
+            @EquipMask.performed += instance.OnEquipMask;
+            @EquipMask.canceled += instance.OnEquipMask;
         }
 
         /// <summary>
@@ -487,6 +538,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @EquipMask.started -= instance.OnEquipMask;
+            @EquipMask.performed -= instance.OnEquipMask;
+            @EquipMask.canceled -= instance.OnEquipMask;
         }
 
         /// <summary>
@@ -569,5 +623,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDrop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EquipMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEquipMask(InputAction.CallbackContext context);
     }
 }

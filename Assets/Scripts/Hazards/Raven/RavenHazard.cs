@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RavenGoosePatrol
@@ -6,6 +7,7 @@ public class RavenGoosePatrol
     public int GoosePatrolCount;
     public Transform GoosePatrolPointA;
     public Transform GoosePatrolPointB;
+    public bool IsMaskPatrol;
 }
 
 public class RavenHazard : MonoBehaviour
@@ -24,15 +26,17 @@ public class RavenHazard : MonoBehaviour
     
     private Rigidbody2D _rb2d;
     private Transform _currentTarget;
-    private readonly RavenGoosePatrol _goosePatrol = new();
+    private RavenGoosePatrol _goosePatrol = new();
     
     // for now just debug log when in radius
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        if (other.TryGetComponent<WitchMask.WitchMaskBuff>(out var witchMaskBuff))
         {
-            GameManager.Instance.ReduceTime(timeReductionPercentage);
+            if (!witchMaskBuff.IsMoving) return;
         }
+        GameManager.Instance.ReduceTime(timeReductionPercentage);
     }
     
     private void Awake()
@@ -47,10 +51,16 @@ public class RavenHazard : MonoBehaviour
         transform.position = pointA.position;
         _currentTarget = pointB;
         if (!relevantGoose) return;
-        _goosePatrol.GoosePatrolPointA = relevantGoose.GetPointA();
-        _goosePatrol.GoosePatrolPointB = relevantGoose.GetPointB();
+        InitGoosePatrolPoints();
     }
 
+    private void InitGoosePatrolPoints()
+    {
+        _goosePatrol.GoosePatrolPointA = relevantGoose.GetPointA();
+        _goosePatrol.GoosePatrolPointB = relevantGoose.GetPointB();
+        _goosePatrol.IsMaskPatrol = false;
+    }
+    
     private void OnEnable()
     {
         if (!relevantGoose) return;
@@ -70,6 +80,14 @@ public class RavenHazard : MonoBehaviour
         _goosePatrol.GoosePatrolCount = 0;
     }
 
+    public void ActivateGooseMaskEffect(RavenGoosePatrol newPatrol)
+    {
+        _goosePatrol.GoosePatrolPointA = newPatrol.GoosePatrolPointA;
+        _goosePatrol.GoosePatrolPointB = newPatrol.GoosePatrolPointB;
+        MoveToGoose();
+        // later we recall InitGoosePatrolPoints() after patrol completed
+    }
+    
     private void FixedUpdate()
     {
         var dir = (_currentTarget.position - transform.position).normalized;
@@ -81,6 +99,7 @@ public class RavenHazard : MonoBehaviour
             if (_goosePatrol.GoosePatrolCount > goosePatrolMaxCount)
             {
                 _goosePatrol.IsGoosePatrolling = false;
+                if(_goosePatrol.IsMaskPatrol) InitGoosePatrolPoints();
                 return;
             }
             if (!(Vector2.Distance(transform.position, _currentTarget.position) < 0.1f)) return;

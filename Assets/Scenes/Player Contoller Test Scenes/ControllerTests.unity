@@ -487,17 +487,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fee322d565f740f79dc16249e0a4f4b, type: 3}
---- !u!114 &1245125609 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1188734720373291238, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
-  m_PrefabInstance: {fileID: 1097978999756605265}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692bff496ea3b44608c6d89ab3053fd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
 --- !u!61 &1325352589 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 9125411219397602616, guid: 4fee322d565f740f79dc16249e0a4f4b, type: 3}
@@ -923,17 +912,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2442339930652522807, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
-      propertyPath: _inventoryManager
-      value: 
-      objectReference: {fileID: 1245125609}
     - target: {fileID: 7473701645547649348, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101333524074745405, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 8447487038403952397, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
       propertyPath: m_LocalPosition.x

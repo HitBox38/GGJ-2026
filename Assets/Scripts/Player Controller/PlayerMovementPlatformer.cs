@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _jumpAction;
 
     private float _speedModifier = 1;
+    private float _jumpModifier = 1;
     
     private void Awake()
     {
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         // jumping
         if (_jumpAction.triggered && groundCheck.IsGrounded)
         {
-            _rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(0f, jumpForce * _jumpModifier), ForceMode2D.Impulse);
         }
 
         _rb2d.sharedMaterial = groundCheck.IsGrounded ?
@@ -54,5 +55,15 @@ public class PlayerMovement : MonoBehaviour
     public void SetSpeedModifier(float modifier)
     {
         _speedModifier = modifier;
+    }
+
+    public void SetJumpModifier(float modifier)
+    {
+        _jumpModifier = modifier;
+    }
+
+    public float GetSpeedModifier()
+    {
+        return _speedModifier;
     }
 }
