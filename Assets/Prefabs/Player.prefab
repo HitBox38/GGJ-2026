@@ -259,7 +259,7 @@ MonoBehaviour:
   jumpForce: 35
   groundCheck: {fileID: 7860036994350553632}
   airFrictionPhysicsMaterial: {fileID: 6200000, guid: 45d630cef3409144f9c9a1d0fe291d7e, type: 2}
-  groundFrictionPhysicsMaterial: {fileID: 6200000, guid: bcfb0862bb6f3f841b74af47cca2a254, type: 2}
+  groundFrictionPhysicsMaterial: {fileID: 6200000, guid: 1ad5cf21143f28d4f9c1cda7963a21a2, type: 2}
 --- !u!70 &8101333524074745405
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
