@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5810529674621237740}
-  - component: {fileID: 3321850688485838963}
+  - component: {fileID: 7769293029894346500}
   m_Layer: 0
-  m_Name: Ox Mask
+  m_Name: Goose Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3321850688485838963
+--- !u!114 &7769293029894346500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 610060513916466855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9feff3b0665624c27a7e9ec355a5ae2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d51b70cccedd4007bc0105161548565, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OxMask
+  m_EditorClassIdentifier: Assembly-CSharp::GooseMask
   player: {fileID: 0}
-  oxMaskSprite: {fileID: 0}
-  capacityIncrease: 20
-  _playerInventory: {fileID: 0}
+  debuffRestMinSeconds: 2
+  debuffRestMaxSeconds: 10
+  ravenPatrolRadius: 3
+  ravenPatrolHeight: 4

@@ -17,8 +17,6 @@ public class MaskObject : MonoBehaviour
     {
         // set this player to player
         this.player = player;
-        // individual masks can use this method to apply effect to the player
-        ApplyEffects();
     }
 
     public virtual void ApplyEffects()
