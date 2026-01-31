@@ -312,6 +312,7 @@ MonoBehaviour:
   player: {fileID: 1857114321}
   masks:
   - {fileID: 3321850688485838963, guid: df857c60c43e547f3a2c39eb8b8d0fa9, type: 3}
+  - {fileID: 3893554159795070092, guid: fa8f55016cbcf48d5a1fe566a3c6c108, type: 3}
   currentMaskIndex: 0
 --- !u!1001 &454990681
 PrefabInstance:
@@ -1297,7 +1298,8 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8044671404602996762, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8447487038403952397, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
       insertIndex: -1
