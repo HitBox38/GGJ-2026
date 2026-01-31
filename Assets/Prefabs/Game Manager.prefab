@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5716017691718291101
+--- !u!1 &4481479382607025969
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3295186157601344043}
-  - component: {fileID: 6765613737343186846}
-  - component: {fileID: 7556315305425756969}
+  - component: {fileID: 1586104063735326551}
+  - component: {fileID: 4212404970762112672}
+  - component: {fileID: 3285192431492273702}
+  - component: {fileID: 5206953238656089924}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -18,42 +19,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3295186157601344043
+--- !u!4 &1586104063735326551
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5716017691718291101}
+  m_GameObject: {fileID: 4481479382607025969}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6775157371935105656}
+  - {fileID: 6604818681987332854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6765613737343186846
+--- !u!114 &4212404970762112672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5716017691718291101}
+  m_GameObject: {fileID: 4481479382607025969}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4183c762884ca04aae349c12b253fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   maxRunTime: 60
---- !u!114 &7556315305425756969
+--- !u!114 &3285192431492273702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5716017691718291101}
+  m_GameObject: {fileID: 4481479382607025969}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9c4444e82de4b3383eeddbf9ca0fcfe, type: 3}
@@ -64,13 +65,29 @@ MonoBehaviour:
   sfxParam: SFXVolume
   defaultMusicVolume: 0.8
   defaultSfxVolume: 0.9
---- !u!1001 &3573850143169210870
+  sfxGroup: {fileID: 0}
+  musicGroup: {fileID: 0}
+--- !u!114 &5206953238656089924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481479382607025969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e9b236b148494ca7df98d5f1b83439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaskSelectionManager
+  maxMasks: 2
+  gameSceneName: GameScene
+--- !u!1001 &3762735387205448056
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3295186157601344043}
+    m_TransformParent: {fileID: 1586104063735326551}
     m_Modifications:
     - target: {fileID: 986905372198947385, guid: 9b1a939eec393884e8126612375b10c3, type: 3}
       propertyPath: m_Name
@@ -121,8 +138,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b1a939eec393884e8126612375b10c3, type: 3}
---- !u!4 &6775157371935105656 stripped
+--- !u!4 &6604818681987332854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8043126014393174926, guid: 9b1a939eec393884e8126612375b10c3, type: 3}
-  m_PrefabInstance: {fileID: 3573850143169210870}
+  m_PrefabInstance: {fileID: 3762735387205448056}
   m_PrefabAsset: {fileID: 0}
