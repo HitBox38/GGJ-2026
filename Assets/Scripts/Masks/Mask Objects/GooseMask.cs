@@ -106,9 +106,4 @@ public class GooseMask : MaskObject
         // add the raven caller debuff component
         AddDebuff<RavenCaller>();
     }
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-    }
 }
