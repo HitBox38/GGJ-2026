@@ -56,7 +56,7 @@ public class MaskHandler : MonoBehaviour
 
     }
 
-    private void RemoveMask()
+    public void RemoveMask()
     {
         if (currentMaskInstance != null)
         {
@@ -94,6 +94,11 @@ public class MaskHandler : MonoBehaviour
             int index = value - 1; // assuming values start at 1
             ChangeMask(index);
         }
+    }
+
+    public bool CompareMask(MaskObject mask)
+    {
+        return currentMaskInstance == mask;
     }
 
 }
