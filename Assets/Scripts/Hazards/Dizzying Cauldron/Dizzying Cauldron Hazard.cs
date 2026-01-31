@@ -13,7 +13,7 @@ public class DizzyingCauldronHazard : MonoBehaviour
         // wait for a bit so that the player wont get stuck in switching directions every frame.
         yield return new WaitForSeconds(effectDelayEnter);
         // multiplying by -1 to invert the speed/inputs
-        other.GetComponent<PlayerMovement>().SetSpeedModifier(-1);
+        other.GetComponent<PlayerMovement>().SetSpeedModifier(-other.GetComponent<PlayerMovement>().GetSpeedModifier());
     }
 
     private IEnumerator OnTriggerExit2D(Collider2D other)
@@ -22,7 +22,7 @@ public class DizzyingCauldronHazard : MonoBehaviour
         // wait for a bit so that the player wont get stuck in switching directions every frame.
         yield return new WaitForSeconds(effectDelayExit);
         // return the speed modifier to normal
-        other.GetComponent<PlayerMovement>().SetSpeedModifier(1);
+        other.GetComponent<PlayerMovement>().SetSpeedModifier(-other.GetComponent<PlayerMovement>().GetSpeedModifier());
     }
 
     public void SetEffectDelayEnter(float delay)

@@ -61,4 +61,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _jumpModifier = modifier;
     }
+
+    public float GetSpeedModifier()
+    {
+        return _speedModifier;
+    }
 }
