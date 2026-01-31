@@ -311,8 +311,7 @@ MonoBehaviour:
   removeMaskValue: 3
   player: {fileID: 1857114321}
   masks:
-  - {fileID: 3321850688485838963, guid: df857c60c43e547f3a2c39eb8b8d0fa9, type: 3}
-  - {fileID: 305470010980497745, guid: 2d8c4e309f27740c9822cbb940ab1186, type: 3}
+  - {fileID: -5416098387589988949, guid: 8d8d41cc7c0bbb145bfb29a7dd491627, type: 3}
   currentMaskIndex: 0
 --- !u!1001 &454990681
 PrefabInstance:

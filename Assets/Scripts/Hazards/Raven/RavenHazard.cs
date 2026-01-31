@@ -31,10 +31,12 @@ public class RavenHazard : MonoBehaviour
     // for now just debug log when in radius
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        if (other.TryGetComponent<WitchMask.WitchMaskBuff>(out var witchMaskBuff))
         {
-            GameManager.Instance.ReduceTime(timeReductionPercentage);
+            if (!witchMaskBuff.IsMoving) return;
         }
+        GameManager.Instance.ReduceTime(timeReductionPercentage);
     }
     
     private void Awake()
