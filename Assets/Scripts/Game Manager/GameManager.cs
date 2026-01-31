@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ResetLevelTimer();
-        
-        SetState(LevelState.InGame); // TODO: remove game start test from here
     }
 
     private void Update()
