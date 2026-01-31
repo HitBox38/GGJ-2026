@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 157fc7ede48ce4553bb0777edb726ca1, type: 3}
-  m_Name: Basic Item Data
+  m_Name: Low Value Item
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: TEST
-  itemIcon: {fileID: 0}
-  value: 30
-  weight: 25
-  itemRadius: 0
+  itemName: LOW
+  itemIcon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  value: 5
+  weight: 5
+  itemRadius: 3
