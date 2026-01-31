@@ -927,6 +927,10 @@ PrefabInstance:
       propertyPath: _inventoryManager
       value: 
       objectReference: {fileID: 1245125609}
+    - target: {fileID: 5094952091035718953, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
+      propertyPath: masks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7473701645547649348, guid: d48341da5bcf59341a36f86117dcc6b0, type: 3}
       propertyPath: m_Name
       value: Player

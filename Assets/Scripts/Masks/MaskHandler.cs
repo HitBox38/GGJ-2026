@@ -1,21 +1,27 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MaskHandler : MonoBehaviour
 {
+    public int removeMaskValue = 3;
     [SerializeField] private GameObject player;
     [SerializeField] private MaskObject[] masks;
-    [SerializeField] private int currentMaskIndex = 0;
+    [SerializeField] private int currentMaskIndex;
+
+    
 
     // track the current mask object
     private MaskObject currentMaskInstance;
+    private PlayerActions _playerActions;
+
+    private void Awake()
+    {
+        _playerActions = new PlayerActions();
+    }
 
     private void Start()
     {
-        if (masks.Length > 0)
-        {
-            // Initialize the first mask if exists
-            EquipMask(currentMaskIndex);
-        }
+        currentMaskIndex = removeMaskValue; // start with no mask equipped
     }
 
     public void ChangeMask(int newIndex)
@@ -46,7 +52,48 @@ public class MaskHandler : MonoBehaviour
         currentMaskInstance.transform.SetParent(player.transform);
 
         currentMaskInstance.Initialize(player);
+        currentMaskInstance.ApplyEffects();
 
+    }
+
+    private void RemoveMask()
+    {
+        if (currentMaskInstance != null)
+        {
+            Destroy(currentMaskInstance.gameObject);
+            currentMaskInstance = null;
+            currentMaskIndex = removeMaskValue;
+        }
+    }
+
+    private void OnEnable()
+    {
+        _playerActions.KeyboardControls.EquipMask.performed += SelectMask;
+        // _playerActions.KeyboardControls.EquipMask1.performed += SelectMask;
+        // _playerActions.KeyboardControls.RemoveMask.performed += SelectMask;
+        _playerActions.KeyboardControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerActions.KeyboardControls.EquipMask.performed -= SelectMask;
+        // _playerActions.KeyboardControls.EquipMask1.performed -= SelectMask;
+        // _playerActions.KeyboardControls.RemoveMask.performed -= SelectMask;
+        _playerActions.KeyboardControls.Disable();
+    }
+
+    public void SelectMask(InputAction.CallbackContext context)
+    {
+        int value = (int)context.ReadValue<float>();
+        if (value == removeMaskValue)
+        {
+            RemoveMask();
+        }
+        else
+        {
+            int index = value - 1; // assuming values start at 1
+            ChangeMask(index);
+        }
     }
 
 }
