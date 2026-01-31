@@ -10,10 +10,9 @@ public class AudioRoute : MonoBehaviour
 
     [SerializeField] private Channel channel = Channel.SFX;
 
-    [Header("Mixer Routing")]
-    [SerializeField] private AudioMixerGroup sfxGroup;
-    [SerializeField] private AudioMixerGroup musicGroup;
-
+    private AudioMixerGroup _sfxGroup;
+    private AudioMixerGroup _musicGroup;
+    
     private AudioSource _src;
 
     private void Reset()
@@ -26,6 +25,12 @@ public class AudioRoute : MonoBehaviour
     private void Awake()
     {
         _src = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        _sfxGroup = SoundManager.Instance.GetSfxGroup();
+        _musicGroup = SoundManager.Instance.GetMusicGroup();
         Apply();
     }
 
@@ -47,10 +52,10 @@ public class AudioRoute : MonoBehaviour
         switch (channel)
         {
             case Channel.SFX:
-                if (sfxGroup != null) _src.outputAudioMixerGroup = sfxGroup;
+                if (_sfxGroup != null) _src.outputAudioMixerGroup = _sfxGroup;
                 break;
             case Channel.Music:
-                if (musicGroup != null) _src.outputAudioMixerGroup = musicGroup;
+                if (_musicGroup != null) _src.outputAudioMixerGroup = _musicGroup;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

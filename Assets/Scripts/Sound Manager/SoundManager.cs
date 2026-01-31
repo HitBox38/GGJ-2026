@@ -16,11 +16,18 @@ public sealed class SoundManager : MonoBehaviour
     [Range(0f, 1f)][SerializeField] private float defaultMusicVolume = 0.8f;
     [Range(0f, 1f)][SerializeField] private float defaultSfxVolume = 0.9f;
 
+    [Header("Mixer Routing")]
+    [SerializeField] private AudioMixerGroup sfxGroup;
+    [SerializeField] private AudioMixerGroup musicGroup;
+    
     private AudioSource _musicSource;
 
     private const string MusicKey = "vol_music";
     private const string SfxKey = "vol_sfx";
 
+    public AudioMixerGroup GetSfxGroup() => sfxGroup;
+    public AudioMixerGroup GetMusicGroup() => musicGroup;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
