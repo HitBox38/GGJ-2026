@@ -60,6 +60,24 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    public void ResetInventory(bool drop= false)
+    {
+        // go over inventory list
+        if (drop)
+        {    
+            foreach (WorldItem item in inventoryItems)
+            {
+                // drop each item
+                item.Drop();
+            }
+        }
+        // clear invenvtory list
+        inventoryItems.Clear();
+
+        _selectedItemIndex = 0;
+        currentCarryWeight = 0f;
+    }
+
     /// <summary>
     /// Forces the drop of a specific item from the inventory.
     /// </summary>

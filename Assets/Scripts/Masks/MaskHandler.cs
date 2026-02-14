@@ -49,7 +49,7 @@ public class MaskHandler : MonoBehaviour
                                         player.transform.position, 
                                         Quaternion.identity);
 
-        // TODO: parent the mask to the player (if needed)
+        // TODO: parent the mask to the player / mask placeholder (if needed)
         currentMaskInstance.transform.SetParent(player.transform);
 
         currentMaskInstance.Initialize(player);

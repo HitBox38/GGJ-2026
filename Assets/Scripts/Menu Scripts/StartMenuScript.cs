@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName;
+    [SerializeField] private string gameSceneName = "MainTest";
+
+    // public global::System.String GameSceneName { get => gameSceneName; set => gameSceneName = value; }
 
     public void Play()
     {
-        // change state to inGame
-        GameManager.Instance.SetState(LevelState.InGame);
         // load the game scene
+        print(GameManager.Instance.State);
         SceneManager.LoadScene(gameSceneName);
     }
 

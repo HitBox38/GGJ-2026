@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Menu Scenes/StartMenu.unity
+    guid: 0ac5087580f664d8ca3359af22cef760
+  - enabled: 1
+    path: Assets/Scenes/Main/MainTest.unity
+    guid: 2b5a8136c6ea9e642abde5d2cdd1d78c
+  - enabled: 1
+    path: Assets/Scenes/Menu Scenes/DeathMenu.unity
+    guid: 8a37e5c9b5383406c95ca067b2f62960
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 34ed5de5efc982c45a111401a116261a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a2f8cd5285731e047a21c1fe3beb2a64, type: 3}

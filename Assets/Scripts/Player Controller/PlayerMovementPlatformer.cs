@@ -11,12 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PhysicsMaterial2D airFrictionPhysicsMaterial;
     [SerializeField] private PhysicsMaterial2D groundFrictionPhysicsMaterial;
     
+    [SerializeField] private Animator _playerAnimator;
+
     private Rigidbody2D _rb2d;
     private InputAction _moveAction;
     private InputAction _jumpAction;
 
     private float _speedModifier = 1;
     private float _jumpModifier = 1;
+
+    private float _prevHorizontalSpeed = 0f;
     
     private void Awake()
     {
@@ -36,7 +40,24 @@ public class PlayerMovement : MonoBehaviour
         var horizontalSpeed = _moveAction.ReadValue<Vector2>().x * speed * _speedModifier;
         var currentYSpeed = _rb2d.linearVelocity.y; // keeping gravity and jumps
         _rb2d.angularVelocity = 0f;
-        _rb2d.linearVelocity = new Vector2(horizontalSpeed, currentYSpeed);
+       
+       
+        if (horizontalSpeed != 0)
+        {
+            // trigger animation switch
+            _playerAnimator.SetBool("isRunning", true);
+            // change directiom based on speed
+            transform.localScale = new Vector3(Mathf.Sign(horizontalSpeed), 1f, 1f);
+            // accelarate (set) up up to (or down to) horizontal speed
+            _rb2d.linearVelocity = new Vector2(horizontalSpeed, currentYSpeed);
+            
+        }
+        else
+        {
+            _playerAnimator.SetBool("isRunning", false);
+            // decelerate to zero
+            float newHorizontalSpeed = Mathf.SmoothDamp(_rb2d.linearVelocity.x, 0, ref horizontalSpeed, 0.3f);
+        }
     }
 
     // normal tick update better for input handling

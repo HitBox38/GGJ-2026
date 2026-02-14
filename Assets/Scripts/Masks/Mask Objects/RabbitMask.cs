@@ -34,7 +34,9 @@ public class RabbitMask : MaskObject
             // remove the speed boost from the player
             if (_playerController != null)
             {
-                _playerController.SetSpeedModifier(Mathf.Sign(_playerController.GetSpeedModifier()) * 1f);
+                _playerController.SetSpeedModifier((/* Mathf.Sign(_playerController.GetSpeedModifier()) * */
+                                                     _playerController.GetSpeedModifier()) / 
+                                                     speedBoost);
                 _playerController.SetJumpModifier(1f);
             }
         }
